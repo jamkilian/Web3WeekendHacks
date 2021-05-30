@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "0b688b1b-57c4-4c50-bd18-c8c4558dd232",
+		"name": "aduios api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "end point get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"const responseJson = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"endpoint found\", function () {\r",
+							"     pm.expect(responseJson.data).to.exist;\r",
+							"    var len = Object.keys(responseJson.data[0]).length;\r",
+							"    if (pm.expect(len).to.above(0)){\r",
+							"        postman.setEnvironmentVariable(\"endpoint\", responseJson.data[0]);\r",
+							"    };\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.audius.co",
+					"protocol": "https",
+					"host": [
+						"api",
+						"audius",
+						"co"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search tracks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"const responseJson = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"track found\", function () {\r",
+							"     pm.expect(responseJson.data).to.exist;\r",
+							"    var len = Object.keys(responseJson.data[0]).length;\r",
+							"    if (pm.expect(len).to.above(0)){\r",
+							"        postman.setEnvironmentVariable(\"track_id\", responseJson.data[0].id);\r",
+							"    };\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/v1/tracks/search?query=baauer b2b&app_name=testapp",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"tracks",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "baauer b2b"
+						},
+						{
+							"key": "app_name",
+							"value": "testapp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single track",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"const responseJson = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"endpoint found\", function () {\r",
+							"     pm.expect(responseJson.data).to.exist;\r",
+							"    \r",
+							"    postman.setEnvironmentVariable(\"repost_count\", responseJson.data.repost_count);\r",
+							"    postman.setEnvironmentVariable(\"favorite_count\", responseJson.data.favorite_count);\r",
+							"    postman.setEnvironmentVariable(\"play_count\", responseJson.data.play_count);\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/v1/tracks/{{track_id}}?app_name=testapp",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"tracks",
+						"{{track_id}}"
+					],
+					"query": [
+						{
+							"key": "app_name",
+							"value": "testapp"
+						},
+						{
+							"key": null,
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
