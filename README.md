@@ -6,9 +6,9 @@ We wanted to create an net-positive incentive for fans to share their favorite t
 
 
 # Work of Note
-./postman contains our Postman configurations and testing, using the Audius API to gather information on tracks.
-main.go demonstrates our API usages.
-next-bucket/ was used to start exploring IPFS and Filecoin. We were able to build with the framework, get a file created and uploaded: https://ipfs.io/ipfs/bafybeihqth3d3whlfjdxyf52kjlakzkl4n2nmxlfbg43yhgjgi3n3zfsre
-YourContract.sol shows some initial smart contract work on the TravelingAlbum idea.
+- `./postman` contains our Postman configurations and testing, using the Audius API to gather information on tracks.
+- `main.go` demonstrates our API usages.
+- `next-bucket/` was used to start exploring IPFS and Filecoin. We were able to build with the framework, get a file created and uploaded: https://ipfs.io/ipfs/bafybeihqth3d3whlfjdxyf52kjlakzkl4n2nmxlfbg43yhgjgi3n3zfsre
+- `TravelingAlbum.sol` shows some initial smart contract work on the TravelingAlbum idea.
 
 
